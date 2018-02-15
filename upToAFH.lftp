@@ -1,0 +1,4 @@
+lftp ftp://Parthib-K:B5juPCaQRsEK@uploads.androidfilehost.com
+mput *tar.xz.*
+mput *.md5sum
+exit
