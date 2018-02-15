@@ -1,0 +1,61 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu:trusty
+    steps:
+      - checkout
+      - run:
+          name: Setup  
+          command: 
+                   mkdir a;
+                   chmod +x manifest.bash;
+                   cp manifest.bash a/manifest.bash;
+                   sudo apt-get update;
+                   sudo apt-get install git bc pxz curl python2.7-minimal python-markdown zip lftp -y;
+                   sudo curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /bin/repo && chmod a+x /bin/repo;
+                   git config --global user.email "email@example.com";
+                   git config --global user.name "root";
+                   echo "Done!";
+          
+      - run:
+          name: Syncing Source (Shallow)
+          command: 
+                   cp upToAFH.lftp a/upToAFH.lftp && cd a;
+                   source manifest.bash;
+                   repo init -u $manifest -b $branch --depth 1 -q;
+                   repo sync -c -f --force-sync --no-clone-bundle --no-tags -j4;
+                   echo "Done!";
+                   
+      - run:
+          name: Compressing
+          command: 
+                   cd a;
+                   export XZ_OPT=-9e;
+                   time tar -I pxz -cvf comp.tar.xz .repo;
+                   echo "Done!";
+                   
+      - run:
+          name: Spliting
+          command:
+                   cd a && source manifest.bash;
+                   split -b 2000M comp.tar.xz "$branch-shallow-$(date +%Y%m%d).tar.xz.";
+                   
+      - run:
+          name: MD5
+          command:           
+                   cd a;
+                   md5sum comp.tar.xz;
+                   md5sum *tar.xz.* > $branch-shallow-$(date +%Y%m%d).md5sum;
+                   cat *.md5sum;
+                   
+      - run:
+          name: Uploading
+          command: 
+                   cd a;
+                   lftp -e "set ssl:verify-certificate no && source upToAFH.lftp";
+                   echo "Done!";
+      - run:
+          name: CleanUp
+          command:           
+                   rm -rf a; 
