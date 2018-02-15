@@ -47,7 +47,7 @@ jobs:
                    cd a;
                    md5sum comp.tar.xz;
                    md5sum *tar.xz.* > $branch-shallow-$(date +%Y%m%d).md5sum;
-                   cat *.md5sum;
+                   awk '{ print }' *.md5sum;
                    
       - run:
           name: Uploading
