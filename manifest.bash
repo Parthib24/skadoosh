@@ -8,12 +8,12 @@
 ### Manifest Configuration ###
 # Name of the ROM. No Spaces Please.
 # Example: CyanogenMod
-name=?
+name=aex
 
 # Manifest link. https:// is mandatory.
 # Example: https://github.com/cyanogenmod/android
-manifest=?
+manifest=https://github.com/AospExtended/manifest
 
 # Manifest branch.
 # Example: cm-14.0
-branch=?
+branch=8.1.x
