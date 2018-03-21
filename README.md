@@ -1,6 +1,6 @@
 # Skadoosh
-## A project for your internet speed concerns.
-# fork of [https://github.com/regalstreak/skadoosh](https://github.com/regalstreak/skadoosh)
+> A project for your internet speed concerns.
+> fork of [https://github.com/regalstreak/skadoosh](https://github.com/regalstreak/skadoosh)
 
 All information available on the [XDA thread](http://forum.xda-developers.com/android/software/sources-android-sources-highly-t3231109) of the source index.
 
