@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Setup  
           command: 
-                   mkdir a;
+                   mkdir as;
                    chmod +x manifest.bash;
                    cp manifest.bash a/manifest.bash;
                    sudo apt-get update;
