@@ -8,14 +8,18 @@ jobs:
       - run:
           name: Setup  
           command: 
-                   mkdir as;
-                   chmod +x manifest.bash;
-                   cp manifest.bash a/manifest.bash;
                    sudo apt-get update;
                    sudo apt-get install git bc pxz curl python2.7-minimal python-markdown zip lftp -y;
                    sudo curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /bin/repo && chmod a+x /bin/repo;
                    git config --global user.email "email@example.com";
                    git config --global user.name "root";
+                   sudo apt-get install wget -y;
+                   wget https://mega.nz/linux/MEGAsync/xUbuntu_14.04/amd64/megacmd-xUbuntu_14.04_amd64.deb;
+                   sudo dpkg -i megacmd*.deb;
+                   sudo apt-get -f install;
+                   mkdir as;
+                   chmod +x manifest.bash;
+                   cp manifest.bash a/manifest.bash;
                    echo "Done!";
           
       - run:
