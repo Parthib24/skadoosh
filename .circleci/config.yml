@@ -15,8 +15,7 @@ jobs:
                    git config --global user.name "root";
                    sudo apt-get install wget -y;
                    wget https://mega.nz/linux/MEGAsync/xUbuntu_14.04/amd64/megacmd-xUbuntu_14.04_amd64.deb;
-                   sudo dpkg -i megacmd*.deb &&
-                   sudo apt-get -f install;
+                   (sudo dpkg -i megacmd*.deb; sudo apt-get -f install);
                    mkdir as;
                    chmod +x manifest.bash;
                    cp manifest.bash a/manifest.bash;
