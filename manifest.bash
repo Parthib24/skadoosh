@@ -12,8 +12,8 @@ name=aosp
 
 # Manifest link. https:// is mandatory.
 # Example: https://github.com/cyanogenmod/android
-manifest=https://android.googlesource.com/platform/manifest
+manifest=https://github.com/LineageOS/android
 
 # Manifest branch.
 # Example: cm-14.0
-branch=android-9.0.0_r3
+branch=lineage-16.0
